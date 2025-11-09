@@ -1,10 +1,10 @@
-import RegistrationForm from "@/components/allForm/RegistrationForm";
+import LoginForm from "@/components/allForm/LoginForm";
 
 
 export default function Home() {
   return (
     <div className=" flex justify-center items-center  ">
-     <RegistrationForm />
+     <LoginForm />
     </div>
   );
 }

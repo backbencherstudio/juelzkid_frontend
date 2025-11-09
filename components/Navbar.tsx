@@ -8,18 +8,17 @@ import { HiOutlineMenu, HiX } from "react-icons/hi";
 import Image from "next/image";
 
 const menuItems = [
-  { en: "Home", bn: "হোম", slug: "/" },
-  { en: "Apartment", bn: "অ্যাপার্টমেন্ট", slug: "/apartments" },
-  { en: "Hotel", bn: "হোটেল", slug: "/hotels" },
-  { en: "Tours", bn: "ট্যুর", slug: "/tours" },
-  { en: "Contact Us", bn: "যোগাযোগ", slug: "/contact" },
+  { en: "Home", slug: "/" },
+  { en: "Apartment", slug: "/apartments" },
+  { en: "Hotel", slug: "/hotels" },
+  { en: "Tours", slug: "/tours" },
+  { en: "Contact Us", slug: "/contact" },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [language, setLanguage] = useState<"en" | "bn">("en");
   const [menuOpen, setMenuOpen] = useState(false);
-
+ const isloginPage = pathname === "/registration";
   return (
     <header className=" sticky top-0 left-0 w-full py-4 px-4">
       <div className="container mx-auto flex justify-between items-center">
@@ -28,8 +27,8 @@ export default function Navbar() {
           <Image src="/mainLogo.png" alt="logo" width={150} height={100} className="w-full h-full " />
         </div>
         <div className="flex items-center gap-3">
-          <Link href="/login" className="text-blackColor text-base">Already have an account?</Link>
-          <button className="bg-whiteColor shadow-[2px_2px_7px_2px_rgba(0,_0,_0,_0.08)] inline-block text-primaryColor font-medium cursor-pointer  text-base px-4 py-2 rounded-[8px]">Sign In</button>
+          <Link href={isloginPage ? "/" : "/registration"} className="text-blackColor text-base">{isloginPage ? "Already have an account?" : "Don't have an account?"}</Link>
+          <Link href={isloginPage ? "/" : "/registration"} className="bg-whiteColor shadow-[2px_2px_7px_2px_rgba(0,_0,_0,_0.08)] inline-block text-primaryColor font-medium cursor-pointer  text-base px-4 py-2 rounded-[8px]">{isloginPage ? "Sign In" : "Create Account"}</Link>
         </div>
 
         {/* Mobile Menu Toggle */}

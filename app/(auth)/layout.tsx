@@ -9,7 +9,7 @@ export default function FrontEndLayout({
     children: React.ReactNode;
 }) {
     return (
-         <div className="bg-gradient-to-tl  w-full relative to-whiteColor from-secondaryColor">
+         <div className="  w-full relative ">
           <div className="flex flex-col">
            <Navbar/>
           <div className="flex-1 relative md:w-[70%] mx-auto w-full flex items-center justify-center">

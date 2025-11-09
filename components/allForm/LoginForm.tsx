@@ -4,27 +4,29 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
 import { Eye, EyeOff } from 'lucide-react'
+import Link from 'next/link'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import CustomButton from '../reusable/CustomButton'
 import FormHeader from '../reusable/FormHeader'
+import { Checkbox } from '../ui/checkbox'
 
 // Form data type
-type RegistrationFormData = {
+type LoginFormData = {
   email: string
   password: string
 }
 
-function RegistrationForm() {
+function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<RegistrationFormData>()
+  } = useForm<LoginFormData>()
 
-  const onSubmit = async (data: RegistrationFormData) => {
+  const onSubmit = async (data: LoginFormData) => {
     try {
       // Handle form submission here
       console.log('Form data:', data)
@@ -40,8 +42,8 @@ function RegistrationForm() {
 
         <FormHeader
         icon={"/icon/user.png"}
-        title="Get Your Personalized Recovery Plan Now"
-        description="We're here to help you rebuild and recover with personalized guidance every step of the way."
+        title="Welcome Back"
+        description="Sign in to continue your personalized recovery journey."
         />
 
         {/* Form Section */}
@@ -115,39 +117,23 @@ function RegistrationForm() {
           </div>
 
           {/* Legal Text */}
-          <div className="text-sm text-[#4a4c56] text-center">
-            By creating an account, you agree to our{' '}
-            <a
-              href="#"
-              className="text-[#FF8C42] underline hover:text-[#FF6B00] transition-colors"
-              onClick={(e) => {
-                e.preventDefault()
-                // Handle Terms of Service click
-              }}
-            >
-              Terms of Service
-            </a>
-            {' '}and{' '}
-            <a
-              href="#"
-              className="text-[#FF8C42] underline hover:text-[#FF6B00] transition-colors"
-              onClick={(e) => {
-                e.preventDefault()
-                // Handle Privacy Policy click
-              }}
-            >
-              Privacy Policy
-            </a>
-            .
+          <div className="flex items-center justify-between">
+            <div className="flex items-center justify-center gap-2">
+                <Checkbox id="remember-me " className=''/>
+                <Label htmlFor="remember-me" className="text-sm font-medium text-blackColor">
+                  Keep me login
+                </Label>
+            </div>
+           <Link href="/forgot-password" className="text-sm font-medium text-primaryColor">Forgot password?</Link>   
           </div>
 
           {/* Submit Button */}
          
-          <CustomButton title="Create an Account - It's Free" loading={isSubmitting} sendingMsg="Creating Account..." type="submit" />
+          <CustomButton title="Sign In" loading={isSubmitting} sendingMsg="Logging in..." type="submit" />
         </form>
       </div>
     </div>
   )
 }
 
-export default RegistrationForm
+export default LoginForm

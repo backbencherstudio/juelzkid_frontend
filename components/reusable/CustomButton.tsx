@@ -16,7 +16,7 @@ export default function CustomButton({ title, className, onClick, icon, loading,
               bg-gradient-to-t from-[#FF8C42] to-primaryColor
               hover:from-[#FF7A35] hover:to-[#FF5A00]
               shadow-md hover:shadow-lg transition-all duration-200
-              disabled:opacity-50 disabled:cursor-not-allowed ${className}`}
+              disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed ${className}`}
             onClick={onClick}
             type={type}
         >
