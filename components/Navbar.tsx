@@ -3,16 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { BsGlobe2 } from "react-icons/bs";
 import { HiOutlineMenu, HiX } from "react-icons/hi";
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const menuItems = [
   { en: "Home", bn: "হোম", slug: "/" },
@@ -28,55 +21,15 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="bg-primaryColor py-4 px-4">
+    <header className=" sticky top-0 left-0 w-full py-4 px-4">
       <div className="container mx-auto flex justify-between items-center">
         {/* Left: Logo */}
         <div className="text-white text-3xl font-semibold tracking-wide">
-          LOGO
+          <Image src="/mainLogo.png" alt="logo" width={150} height={100} className="w-full h-full " />
         </div>
-
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-6 text-base">
-          {menuItems.map((item) => (
-            <Link
-              key={item.slug}
-              href={item.slug}
-              className={cn(
-                "hover:text-secondaryColor transition",
-                pathname === item.slug ? "text-secondaryColor" : "text-white"
-              )}
-            >
-              {language === "en" ? item.en : item.bn}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Right: Language, Auth Buttons */}
-        <div className="hidden md:flex items-center space-x-[14px]">
-          {/* Language Dropdown */}
-          <DropdownMenu>
-            <DropdownMenuTrigger className="text-white text-base flex focus:outline-0 cursor-pointer items-center gap-[6px]">
-              <BsGlobe2 /> {language.toUpperCase()}
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setLanguage("en")}>
-                English
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setLanguage("bn")}>
-                বাংলা
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <Link href="/login" className="text-white text-base">
-            Login
-          </Link>
-          <Link
-            href="/registration"
-            className="bg-secondaryColor text-blackColor font-medium cursor-pointer  text-base px-4 py-2 rounded-[8px]"
-          >
-            Sign up
-          </Link>
+        <div className="flex items-center gap-3">
+          <Link href="/login" className="text-blackColor text-base">Already have an account?</Link>
+          <button className="bg-whiteColor shadow-[2px_2px_7px_2px_rgba(0,_0,_0,_0.08)] inline-block text-primaryColor font-medium cursor-pointer  text-base px-4 py-2 rounded-[8px]">Sign In</button>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -93,37 +46,9 @@ export default function Navbar() {
       {/* Mobile Menu Content */}
       {menuOpen && (
         <div className="md:hidden px-4 mt-4 space-y-3">
-          {menuItems.map((item) => (
-            <Link
-              key={item.slug}
-              href={item.slug}
-              className={cn(
-                "block text-base py-2",
-                pathname === item.slug ? "text-secondaryColor" : "text-white"
-              )}
-              onClick={() => setMenuOpen(false)}
-            >
-              {language === "en" ? item.en : item.bn}
-            </Link>
-          ))}
-
+        
           {/* Language Dropdown (Mobile) */}
           <div className=" flex  items-center justify-between">
-            <div className="text-white text-base flex items-center gap-2 ">
-              <BsGlobe2 />
-              <select
-                value={language}
-                onChange={(e) => setLanguage(e.target.value as "en" | "bn")}
-                className="bg-transparent outline-none text-white"
-              >
-                <option value="en" className="text-black">
-                  English
-                </option>
-                <option value="bn" className="text-black">
-                  বাংলা
-                </option>
-              </select>
-            </div>
          
               <Link href="/login" className="text-white text-base">
                 Login
