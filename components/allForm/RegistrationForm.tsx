@@ -35,7 +35,7 @@ function RegistrationForm() {
   }
 
   return (
-    <div className=" flex items-center justify-center p-4" >
+    <div className=" flex items-center justify-center " >
       <div className="w-full max-w-[500px] bg-white rounded-2xl shadow-lg p-4 md:p-9">
 
         <FormHeader
