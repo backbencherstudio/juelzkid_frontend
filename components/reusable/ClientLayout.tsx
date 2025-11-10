@@ -9,7 +9,7 @@ function ClientLayout({children}:{
   children: React.ReactNode;
 }) {
     const pathname = usePathname();
-
+   const isDashboard = pathname == "/dashboard" || pathname == "/options" || pathname == "/resources" || pathname == "/about-you" || pathname == "/property-info"
   return (
 
     <div>
@@ -25,7 +25,7 @@ function ClientLayout({children}:{
               priority
             />
           </div>
-         {pathname == "/dashboard" || pathname == "/options" || pathname == "/resources" ? <DashboardNavbar/> : <Navbar/>}
+         {isDashboard ? <DashboardNavbar/> : <Navbar/>}
           <div className=" relative z-10 flex items-center justify-center py-6 md:py-0">
             {children}
           </div>

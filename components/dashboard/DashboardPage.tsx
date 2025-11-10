@@ -4,10 +4,24 @@ import { FiInfo } from "react-icons/fi"
 import BackgorundColor from "../reusable/BackgorundColor"
 import CustomButton from "../reusable/CustomButton"
 import FormHeader from '../reusable/FormHeader'
-
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { toast } from "react-toastify"
 function DashboardPage() {
+    const router = useRouter()
+    const [isSubmitting, setIsSubmitting] = useState(false)
     const handleGetStarted = () => {
-        console.log("Get Started")
+        try {
+            setIsSubmitting(true)
+            setTimeout(() => {
+            router.push("/about-you")
+            setIsSubmitting(false)
+            toast.success("Get started successfully")
+        }, 500);
+        } catch (error) {
+            setIsSubmitting(false)
+            toast.error("Failed to get started")
+        }
     }
   return (
     <div>
@@ -27,6 +41,8 @@ function DashboardPage() {
               className="w-full font-medium"
               title="Get a Personalized Recovery Plan Now"
               onClick={handleGetStarted}
+              loading={isSubmitting}
+              sendingMsg="Getting Started..."
               />
             </div>
         </BackgorundColor>

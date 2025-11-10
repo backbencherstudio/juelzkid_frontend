@@ -9,10 +9,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { UserService } from "@/service/user/user.service";
 import { LogOutIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import { HiOutlineMenu, HiX } from "react-icons/hi";
@@ -20,6 +21,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { LuBookText } from "react-icons/lu";
 import { RxDashboard } from "react-icons/rx";
+import { toast } from "react-toastify";
 const menuItems = [
   { name: "Dashboard", slug: "/dashboard", icon : <RxDashboard /> },
   { name: "My Plans", slug: "/options" , icon : <AiOutlineFileSearch  /> },
@@ -27,11 +29,21 @@ const menuItems = [
 ];
 
 export default function DashboardNavbar() {
+  const router = useRouter()
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const isActive = (href: string): boolean => {
     return pathname === href || pathname.startsWith(`${href}/`)
   };
+
+  const handleLogout = () => {
+    try {
+      router.push("/")
+      toast.success("Logged out successfully")
+    } catch (error) {
+      toast.error("Failed to logout")
+    }
+  }
 
   return (
     <header className=" sticky  top-0 left-0 w-full py-4 z-50  ">
@@ -90,7 +102,7 @@ export default function DashboardNavbar() {
               <DropdownMenuItem className="text-sm border rounded-full flex justify-center">  <div className="">
                 <Image src="/icon/user_svg.svg" alt="user" width={20} height={20} className="w-[22px] h-[22px] border rounded-full border-blueColor/60 p-[1px]" /> </div> John Doe</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem variant="destructive" className="text-sm border rounded-full flex justify-center"> <LogOutIcon className="w-[22px] h-[22px]" /> Logout</DropdownMenuItem>
+              <DropdownMenuItem onClick={handleLogout} variant="destructive" className="text-sm border rounded-full flex justify-center"> <LogOutIcon className="w-[22px] h-[22px]" />  Logout</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

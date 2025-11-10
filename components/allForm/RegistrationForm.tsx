@@ -4,8 +4,10 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
 import { Eye, EyeOff } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 import CustomButton from '../reusable/CustomButton'
 import FormHeader from '../reusable/FormHeader'
 
@@ -17,21 +19,25 @@ type RegistrationFormData = {
 
 function RegistrationForm() {
   const [showPassword, setShowPassword] = useState(false)
-
+  const router = useRouter()
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<RegistrationFormData>()
-
+ const [isSubmitting, setIsSubmitting] = useState(false)
   const onSubmit = async (data: RegistrationFormData) => {
     try {
-      // Handle form submission here
-      console.log('Form data:', data)
-      // Add your API call or form handling logic
+      setIsSubmitting(true)
+      setTimeout(() => {
+        router.push("/")
+        setIsSubmitting(false)
+        toast.success("Registered successfully")
+      }, 500);
     } catch (error) {
       console.error('Form submission error:', error)
-    }
+      setIsSubmitting(false)
+    } 
   }
 
   return (

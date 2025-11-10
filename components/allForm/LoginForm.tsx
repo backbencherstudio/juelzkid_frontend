@@ -5,11 +5,13 @@ import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
 import { Eye, EyeOff } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import CustomButton from '../reusable/CustomButton'
 import FormHeader from '../reusable/FormHeader'
 import { Checkbox } from '../ui/checkbox'
+import { toast } from 'react-toastify'
 
 // Form data type
 type LoginFormData = {
@@ -19,20 +21,24 @@ type LoginFormData = {
 
 function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
-
+  const router = useRouter()
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<LoginFormData>()
-
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const onSubmit = async (data: LoginFormData) => {
     try {
-      // Handle form submission here
-      console.log('Form data:', data)
-      // Add your API call or form handling logic
+      setIsSubmitting(true)
+      setTimeout(() => {
+        router.push("/dashboard")
+        setIsSubmitting(false)
+        toast.success("Logged in successfully")
+      }, 500);
     } catch (error) {
       console.error('Form submission error:', error)
+      setIsSubmitting(false)
     }
   }
 

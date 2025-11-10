@@ -1,3 +1,4 @@
+import CustomToastContainer from "@/components/CustomToast/CustomToastContainer";
 import ClientLayout from "@/components/reusable/ClientLayout";
 import { AppConfig } from "@/config/app.config";
 import type { Metadata } from "next";
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className}`}>
+        <CustomToastContainer />
         <ClientLayout>
           {children}
         </ClientLayout>

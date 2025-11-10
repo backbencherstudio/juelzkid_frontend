@@ -13,7 +13,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
  const isloginPage = pathname === "/registration";
   return (
-    <header className=" sticky top-0 left-0 w-full py-4 z-50 bg bg-gradient-to-tl to-whiteColor from-secondaryColor ">
+    <header className=" sticky top-0 left-0 w-full py-4 z-50 ">
       <div className="container  w-full flex justify-between items-center">
         {/* Left: Logo */}
         <div className="text-white text-3xl font-semibold tracking-wide">
