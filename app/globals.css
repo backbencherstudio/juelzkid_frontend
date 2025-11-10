@@ -10,7 +10,7 @@
 }
 @theme inline {
   --color-primaryColor: var(--primaryColor);
-  --color-secondaryColor: var(--secondaryColor);
+  --color-secondaryColor: #C2DBFF;
   --color-blackColor: var(--blackColor);
   --color-whiteColor: var(--whiteColor);
   --color-ratingColor: var(--ratingColor);
@@ -24,7 +24,7 @@
   --color-blueColor2: #076FA3;
   --color-ratingColor: #ffc52e;
   --color-bgColor: var(--bgColor);
-  --color-descriptionColor: var(--descriptionColor);
+  --color-descriptionColor: #505050;
   /* ======== */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

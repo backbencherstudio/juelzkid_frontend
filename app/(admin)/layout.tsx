@@ -10,7 +10,6 @@ export default function AdminLayout({
     return (
          <div className="  w-full relative ">
           <div className="flex flex-col">
-           <Navbar/>
             <div className="container h-full flex items-center justify-center w-full">
               {children}
             </div>

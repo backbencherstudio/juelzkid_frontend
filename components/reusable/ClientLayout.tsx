@@ -1,13 +1,19 @@
+"use client"
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import React from 'react';
+import DashboardNavbar from "../DashboardNavbar";
 import Footer from '../Footer';
 import Navbar from '../Navbar';
 function ClientLayout({children}:{
   children: React.ReactNode;
 }) {
+    const pathname = usePathname();
+
   return (
+
     <div>
-      <div className="min-h-screen bg-gradient-to-tl w-full justify-between relative to-whiteColor from-secondaryColor flex flex-col">
+      <div className="min-h-screen bg-gradient-to-tl w-full justify-between relative to-whiteColor from-secondaryColor flex flex-col ">
           {/* Background Image - Fixed size and centered */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0">
             <Image 
@@ -19,8 +25,8 @@ function ClientLayout({children}:{
               priority
             />
           </div>
-          <Navbar/>
-          <div className=" relative z-10 flex items-center justify-center">
+         {pathname == "/dashboard" || pathname == "/options" || pathname == "/resources" ? <DashboardNavbar/> : <Navbar/>}
+          <div className=" relative z-10 flex items-center justify-center py-6 md:py-0">
             {children}
           </div>
           <div className="mt-20">

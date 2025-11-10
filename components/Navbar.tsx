@@ -13,7 +13,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
  const isloginPage = pathname === "/registration";
   return (
-    <header className=" sticky top-0 left-0 w-full py-4 ">
+    <header className=" sticky top-0 left-0 w-full py-4 z-50 bg bg-gradient-to-tl to-whiteColor from-secondaryColor ">
       <div className="container  w-full flex justify-between items-center">
         {/* Left: Logo */}
         <div className="text-white text-3xl font-semibold tracking-wide">
@@ -22,7 +22,7 @@ export default function Navbar() {
         <div className=" flex  items-center gap-3">
           <Link href={isloginPage ? "/" : "/registration"} className="text-blackColor hidden md:block text-base">{isloginPage ? "Already have an account?" : "Don't have an account?"}</Link>
           <Link href={isloginPage ? "/" : "/registration"} className="bg-whiteColor shadow-[2px_2px_7px_2px_rgba(0,_0,_0,_0.08)] inline-block text-primaryColor font-medium cursor-pointer  text-base px-4 py-2 rounded-[8px]">{isloginPage ? "Sign In" : "Create Account"}</Link>
-        </div>
+        </div>  
 
       </div>
 
