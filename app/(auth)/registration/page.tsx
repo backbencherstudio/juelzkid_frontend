@@ -3,7 +3,7 @@ import React from 'react'
 
 function page() {
   return (
-    <div className=" flex items-center justify-center p-4" >
+    <div className=" flex items-center justify-center " >
       <RegistrationForm />
     </div>
   )

@@ -1,4 +1,5 @@
-import Footer from "@/components/Footer";
+import CustomToastContainer from "@/components/CustomToast/CustomToastContainer";
+import ClientLayout from "@/components/reusable/ClientLayout";
 import { AppConfig } from "@/config/app.config";
 import type { Metadata } from "next";
 import { Inter } from 'next/font/google';
@@ -19,12 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className}`}>
-        <div className="min-h-screen bg-gradient-to-tl w-full relative to-whiteColor from-secondaryColor flex flex-col">
-          <div className="flex-1">
-            {children}
-          </div>
-          <Footer/>
-        </div>
+        <CustomToastContainer />
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );
