@@ -13,17 +13,16 @@ import { LogOutIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AiOutlineFileSearch } from "react-icons/ai";
-import { GoArrowLeft } from "react-icons/go";
 import { HiOutlineMenu, HiX } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { LuBookText } from "react-icons/lu";
-import { PiBuildingOffice } from "react-icons/pi";
 
 import { RxDashboard } from "react-icons/rx";
 import { toast } from "react-toastify";
+import PropertyNavStep from "./reusable/PropertyNavStep";
 const menuItems = [
   { name: "Dashboard", slug: "/dashboard", icon : <RxDashboard /> },
   { name: "My Plans", slug: "/options" , icon : <AiOutlineFileSearch  /> },
@@ -37,55 +36,7 @@ export default function DashboardNavbar() {
   const isActive = (href: string): boolean => {
     return pathname === href || pathname.startsWith(`${href}/`)
   };
-  const [stepCount, setStepCount] = useState(0)
 const  isPropertSetp = pathname.includes("/property-info")
-const totalSteps = 6
-
-// Update stepCount based on pathname
-useEffect(() => {
-  let currentStep = 0
-  if (pathname.includes("/property-info/property-step-six")) {
-    currentStep = 6
-  } else if (pathname.includes("/property-info/property-step-five")) {
-    currentStep = 5
-  } else if (pathname.includes("/property-info/property-step-four")) {
-    currentStep = 4
-  } else if (pathname.includes("/property-info/property-step-three")) {
-    currentStep = 3
-  } else if (pathname.includes("/property-info/property-step-two")) {
-    currentStep = 2
-  } else if (pathname.includes("/property-info")) {
-    currentStep = 1
-  }
-  setStepCount(currentStep)
-}, [pathname])
-
-const progressRatio = totalSteps > 0 ? Math.min(stepCount / totalSteps, 1) : 0
-const progressDegrees = `${progressRatio * 360}deg`
-
-const redirectPropertyStep = () => {
-  if(isPropertSetp && pathname.includes("/property-info") && !pathname.includes("/property-step")) {
-    setStepCount(1)
-    router.push("/dashboard")
-  } else if(isPropertSetp && pathname.includes("/property-info/property-step-two")) {
-    setStepCount(2)
-    router.push("/property-info")
-  } else if(isPropertSetp && pathname.includes("/property-info/property-step-three")) {
-    setStepCount(3)
-    router.push("/property-info/property-step-two")
-  } else if(isPropertSetp && pathname.includes("/property-info/property-step-four")) {
-    setStepCount(4)
-    router.push("/property-info/property-step-three")
-  } else if(isPropertSetp && pathname.includes("/property-info/property-step-five")) {
-    setStepCount(5)
-    router.push("/property-info/property-step-four")
-  }else if(isPropertSetp && pathname.includes("/property-info/property-step-six")) {
-    setStepCount(6)
-    router.push("/property-info/property-step-five")
-  } else {
-    router.push("/dashboard")
-  }
-}
   const handleLogout = () => {
     try {
       router.push("/")
@@ -95,6 +46,8 @@ const redirectPropertyStep = () => {
     }
   }
 
+  const title = pathname.includes("/property-info") ? "Property Info" : "Dashboard"
+  const stepLength = pathname.includes("/property-info") ? 6 : 0
   return (
     <header className=" sticky  top-0 left-0 w-full py-4 z-50  ">
       <div className="container h-full mx-auto flex justify-between items-center">
@@ -104,43 +57,7 @@ const redirectPropertyStep = () => {
         </div>
         <div className="hidden md:block bg-whiteColor z-10 rounded-lg border border-blueColor/60  p-1">
         {isPropertSetp ? 
-        <div className="flex items-center  gap-2 h-full"> 
-          <button 
-            onClick={redirectPropertyStep}
-            className="flex cursor-pointer relative items-center gap-3 p-3 bg-secondaryColor/60 rounded-[8px]" 
-            aria-label="Go back to previous step"
-          >
-            <GoArrowLeft   className="text-blackColor md:w-[22px] md:h-[22px] w-[18px] h-[18px]" />
-          </button>
-
-         <div className="flex items-center gap-2 p-1 bg-secondaryColor/60 rounded-[8px]"> 
-          <div 
-            className="flex cursor-pointer relative items-center gap-3 p-2 bg-whiteColor rounded-[8px]" 
-          >
-            <PiBuildingOffice   className="text-blackColor md:w-[22px] md:h-[22px] w-[18px] h-[18px]" />
-          </div>
-          
-          <div className="flex gap-4 items-center">
-          <p
-           className="text-blackColor text-sm font-bold capitalize">Property Info</p>
-          <p className="text-[#6E6E6E] text-sm">step {stepCount } of {totalSteps }</p>
-          </div>
-           <div>
-            <div className="relative w-10 h-10">
-              <div
-                className="absolute inset-0 rounded-full"
-                style={{
-                  background: `conic-gradient(#1f4acc ${progressDegrees}, #fff 0deg)`
-                }}
-              />
-              <div className="absolute inset-[4px] bg-secondaryColor rounded-full flex items-center justify-center text-sm font-bold text-blackColor">
-                {stepCount}
-              </div>
-            </div>
-          </div>
-          </div>
-         
-        </div> : (
+        <PropertyNavStep title={title} stepLength={stepLength} /> : (
         <div className=" flex items-center gap-[4.5px]  h-full ">
             {menuItems.map((item) => (
                 <Link href={item.slug}  key={item.slug} className={`text-blackColor py-3 px-5 rounded-[8px] h-full  flex items-center gap-2 text-base ${isActive(item.slug) ? "bg-gradient-to-tl to-blueColor from-blueColor2 text-white" : "bg-secondaryColor/90"}`}>
