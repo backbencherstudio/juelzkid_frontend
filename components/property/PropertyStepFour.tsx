@@ -50,7 +50,7 @@ export default function PropertyStepFireAreas() {
             question="Do you have immediate needs for temporary housing, food, or clothing? "
             required
             options={areaOptions}
-            typeFlex={2}
+            typeFlex={1}
             selectedValues={selected}
             onChange={(vals) => setValue('affectedAreas', vals, { shouldValidate: true })}
             error={errors.affectedAreas?.message}

@@ -13,7 +13,7 @@ interface MultiSelectCheckboxGroupProps {
   question: string
   required?: boolean
   options: Option[]
-  typeFlex?: number
+  typeFlex?: boolean | number
   selectedValues: string[]
   onChange: (values: string[]) => void
   error?: string

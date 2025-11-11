@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
+import { Label } from '../ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 import PropertyStepTwoForm from './PropertyStepTwoForm'
 
@@ -35,9 +36,12 @@ function PropertyStepFive() {
   const router = useRouter()
 
   const onSubmit = async (data: StepFiveFormData) => {
+    console.log('squareFeet', squareFeet);
+    
     setIsSubmitting(true)
     try {
-      console.log('Step five data:', data + ' ' + squareFeet)
+      console.log('Step five data:', data + ' ' )
+      console.log('Step five data:', squareFeet)
       setTimeout(() => {
         router.push('/property-info/property-step-six')
         toast.success('Step saved successfully')
@@ -52,8 +56,10 @@ function PropertyStepFive() {
     <div className="flex items-center justify-center">
       <div className="md:w-[500px] w-[90vw] max-w-[530px] bg-white rounded-2xl shadow-lg p-4 md:p-9">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <Select>
-            <SelectTrigger onChange={(e: React.ChangeEvent<HTMLButtonElement>) => setSquareFeet(e.target.value)}>
+            <div>
+          <Label className="text-sm font-medium mb-2 text-[#070707]">What's the approximate square footage?<span className="text-[#e12626]">*</span></Label>
+          <Select value={squareFeet} onValueChange={(v) => setSquareFeet(v)}>
+            <SelectTrigger className='!h-11 md:!h-12 w-full'>
               <SelectValue placeholder="Select square footage" />
             </SelectTrigger>
             <SelectContent>
@@ -64,9 +70,9 @@ function PropertyStepFive() {
               <SelectItem value="5000-6000">5000-6000</SelectItem>
               <SelectItem value="6000-7000">6000-7000</SelectItem>
               <SelectItem value="7000-8000">7000-8000</SelectItem>
-             
             </SelectContent>
           </Select>
+            </div>
 
           <PropertyStepTwoForm
             question="Did you live in or rent this property? "
