@@ -35,9 +35,9 @@ function PropertyStepThree() {
   const onSubmit = async (data: StepThreeFormData) => {
     setIsSubmitting(true)
     try {
-      console.log('Step Two data:', data)
+      console.log('Step Three data:', data)
       setTimeout(() => {
-        router.push('/property-info/property-step-three')
+        router.push('/property-info/property-step-four')
         toast.success('Step saved successfully')
         setIsSubmitting(false)
       }, 400)
