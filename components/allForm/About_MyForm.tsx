@@ -44,7 +44,7 @@ const [isSubmitting, setIsSubmitting] = useState(false)
 
   return (
     <div className=" flex items-center justify-center ">
-      <div className="w-[500px] max-w-[500px] bg-white rounded-2xl shadow-lg p-4 md:p-9">
+      <div className="md:w-[500px] w-[90vw] max-w-[500px] bg-white rounded-2xl shadow-lg p-4 md:p-9">
         {/* Form Section */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 w-full">
           {/* Full Name */}
@@ -57,7 +57,7 @@ const [isSubmitting, setIsSubmitting] = useState(false)
               type="text"
               placeholder="John Matthews"
               className={cn(
-                'w-full h-11 rounded-md border border-gray-300 bg-white px-4',
+                'w-full !h-11 rounded-md border border-gray-300 bg-white px-4',
                 'focus:border-[#0068EF] focus:ring-1 focus:ring-[#0068EF]',
                 errors.fullName && 'border-[#e12626] focus:border-[#e12626] focus:ring-[#e12626]'
               )}
@@ -84,7 +84,7 @@ const [isSubmitting, setIsSubmitting] = useState(false)
               type="email"
               placeholder="Enter your email"
               className={cn(
-                'w-full h-11 rounded-md border border-gray-300 bg-white px-4',
+                'w-full !h-11 rounded-md border border-gray-300 bg-white px-4',
                 'focus:border-[#0068EF] focus:ring-1 focus:ring-[#0068EF]',
                 errors.email && 'border-[#e12626] focus:border-[#e12626] focus:ring-[#e12626]'
               )}
@@ -111,7 +111,7 @@ const [isSubmitting, setIsSubmitting] = useState(false)
               type="tel"
               placeholder="(555) 238-7912"
               className={cn(
-                'w-full h-11 rounded-md border border-gray-300 bg-white px-4',
+                'w-full !h-11 rounded-md border border-gray-300 bg-white px-4',
                 'focus:border-[#0068EF] focus:ring-1 focus:ring-[#0068EF]',
                 errors.phone && 'border-[#e12626] focus:border-[#e12626] focus:ring-[#e12626]'
               )}
@@ -137,7 +137,7 @@ const [isSubmitting, setIsSubmitting] = useState(false)
               id="message"
               placeholder="Tell us honestly..."
               className={cn(
-                'w-full min-h-[110px] rounded-md border border-gray-300 bg-white px-4 py-3',
+                'w-full !min-h-[110px] rounded-md border border-gray-300 bg-white px-4 py-3',
                 'focus:border-[#0068EF] focus:ring-1 focus:ring-[#0068EF]'
               )}
               {...register('message')}

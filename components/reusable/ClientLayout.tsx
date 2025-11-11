@@ -9,7 +9,7 @@ function ClientLayout({children}:{
   children: React.ReactNode;
 }) {
     const pathname = usePathname();
-   const isDashboard = pathname == "/dashboard" || pathname == "/options" || pathname == "/resources" || pathname == "/about-you" || pathname == "/property-info"
+   const isDashboard = pathname == "/dashboard" || pathname == "/options" || pathname == "/resources" || pathname == "/about-you" || pathname.includes("/property-info") 
   return (
 
     <div>

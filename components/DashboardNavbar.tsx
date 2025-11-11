@@ -9,7 +9,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { UserService } from "@/service/user/user.service";
 import { LogOutIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,8 +19,10 @@ import { HiOutlineMenu, HiX } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { LuBookText } from "react-icons/lu";
+
 import { RxDashboard } from "react-icons/rx";
 import { toast } from "react-toastify";
+import PropertyNavStep from "./reusable/PropertyNavStep";
 const menuItems = [
   { name: "Dashboard", slug: "/dashboard", icon : <RxDashboard /> },
   { name: "My Plans", slug: "/options" , icon : <AiOutlineFileSearch  /> },
@@ -35,7 +36,7 @@ export default function DashboardNavbar() {
   const isActive = (href: string): boolean => {
     return pathname === href || pathname.startsWith(`${href}/`)
   };
-
+const  isPropertSetp = pathname.includes("/property-info")
   const handleLogout = () => {
     try {
       router.push("/")
@@ -45,6 +46,8 @@ export default function DashboardNavbar() {
     }
   }
 
+  const title = pathname.includes("/property-info") ? "Property Info" : "Dashboard"
+  const stepLength = pathname.includes("/property-info") ? 6 : 0
   return (
     <header className=" sticky  top-0 left-0 w-full py-4 z-50  ">
       <div className="container h-full mx-auto flex justify-between items-center">
@@ -53,6 +56,8 @@ export default function DashboardNavbar() {
           <Image src="/mainLogo.png" alt="logo" width={150} height={100} className="w-[100px] md:w-auto max-w-[150px] h-full " />
         </div>
         <div className="hidden md:block bg-whiteColor z-10 rounded-lg border border-blueColor/60  p-1">
+        {isPropertSetp ? 
+        <PropertyNavStep title={title} stepLength={stepLength} /> : (
         <div className=" flex items-center gap-[4.5px]  h-full ">
             {menuItems.map((item) => (
                 <Link href={item.slug}  key={item.slug} className={`text-blackColor py-3 px-5 rounded-[8px] h-full  flex items-center gap-2 text-base ${isActive(item.slug) ? "bg-gradient-to-tl to-blueColor from-blueColor2 text-white" : "bg-secondaryColor/90"}`}>
@@ -63,6 +68,7 @@ export default function DashboardNavbar() {
                 </Link>
             ))}
         </div>
+        )}
         </div>
 
         <div className="flex items-center gap-2">
