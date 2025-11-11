@@ -1,6 +1,7 @@
 'use client'
 
 import CustomButton from '@/components/reusable/CustomButton'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
@@ -30,11 +31,12 @@ export default function PropertyStepFireAreas() {
 
   const selected = watch('affectedAreas')
   const [isSubmitting, setIsSubmitting] = useState(false)
-
+  const router = useRouter()
   const onSubmit = async (data: FireAreaForm) => {
     setIsSubmitting(true)
     console.log('Selected fire-affected areas:', data)
     setTimeout(() => {
+        router.push('/property-info/property-step-five')
       toast.success('Saved successfully!')
       setIsSubmitting(false)
     }, 500)
