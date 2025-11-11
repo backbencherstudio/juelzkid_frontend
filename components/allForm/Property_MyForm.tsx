@@ -4,11 +4,11 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { cn } from '@/lib/utils'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import CustomButton from '../reusable/CustomButton'
-import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
+import CustomButton from '../reusable/CustomButton'
 
 // Form data type
 type PropertyFormData = {
@@ -40,7 +40,7 @@ const router = useRouter()
     try {
       console.log('Property form:', data)
       setTimeout(() => {
-        router.push("/damage-info")
+        router.push("/property-info/property-step-two")
         setIsSubmitting(false)
         toast.success("Form submitted successfully")
       }, 500);
@@ -51,7 +51,7 @@ const router = useRouter()
 
   return (
     <div className=" flex items-center justify-center ">
-      <div className="w-[500px] max-w-[530px] bg-white rounded-2xl shadow-lg p-4 md:p-9">
+      <div className="md:w-[500px] w-[90vw] max-w-[530px] bg-white rounded-2xl shadow-lg p-4 md:p-9">
 
         {/* Form Section */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 ">
@@ -86,7 +86,7 @@ const router = useRouter()
               onValueChange={(val) => setValue('propertyType', val, { shouldValidate: true })}
             >
               <SelectTrigger className={cn(
-                'w-full h-11 rounded-md border border-gray-300 bg-white px-4 justify-between md:!h-12',
+                'w-full !h-11 rounded-md border border-gray-300 bg-white px-4 justify-between md:!h-12',
                 errors.propertyType && 'border-[#e12626] md:!h-12'
               )}>
                 <SelectValue placeholder="Select property type" />
@@ -134,7 +134,7 @@ const router = useRouter()
               onValueChange={(val) => setValue('severity', val, { shouldValidate: true })}
             >
               <SelectTrigger className={cn(
-                'w-full h-11 rounded-md border border-gray-300 bg-white px-4 justify-between md:!h-12',
+                'w-full !h-11 rounded-md border border-gray-300 bg-white px-4 justify-between md:!h-12',
                 errors.severity && 'border-[#e12626] md:!h-12'
               )}>
                 <SelectValue placeholder="Select damage severity" />
