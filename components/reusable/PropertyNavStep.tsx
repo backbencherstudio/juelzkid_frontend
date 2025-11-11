@@ -57,7 +57,7 @@ const redirectPropertyStep = () => {
   }
 }
   return (
-    <div className='bg-whiteColor rounded-[8px] p-2'>
+    <div className='bg-whiteColor rounded-[8px] p-2 md:p-1 lg:p-2'>
        <div className="flex items-center  gap-2 h-full"> 
           <button 
             onClick={redirectPropertyStep}
@@ -66,14 +66,12 @@ const redirectPropertyStep = () => {
           >
             <GoArrowLeft   className="text-blackColor md:w-[22px] md:h-[22px] w-[18px] h-[18px]" />
           </button>
-
          <div className="flex items-center gap-2 p-1 bg-secondaryColor/60 rounded-[8px]"> 
           <div 
             className="flex cursor-pointer relative items-center gap-3 p-2 bg-whiteColor rounded-[8px]" 
           >
             <PiBuildingOffice   className="text-blackColor md:w-[22px] md:h-[22px] w-[18px] h-[18px]" />
           </div>
-          
           <div className="flex gap-4 items-center">
           <p
            className="text-blackColor text-sm font-bold capitalize">{title}</p>
@@ -93,7 +91,6 @@ const redirectPropertyStep = () => {
             </div>
           </div>
           </div>
-         
         </div>
     </div>
   )

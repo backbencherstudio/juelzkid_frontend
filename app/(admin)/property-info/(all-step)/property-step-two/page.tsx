@@ -1,9 +1,9 @@
-import FormHeader from '@/components/reusable/FormHeader'
+import PropertyStepTwo from "@/components/property/PropertyStepTwo"
 
 function page() {
   return (
     <div>
-      hiii
+     <PropertyStepTwo />
     </div>
   )
 }
