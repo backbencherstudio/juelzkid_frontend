@@ -6,12 +6,13 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import PropertyStepTwoForm from './PropertyStepTwoForm'
+import CustomLink from '../reusable/CustomLink'
 
 
 const displacementOptions = [
   { value: 'I’m displaced and staying elsewhere' },
-  { value: 'I’m still staying at the property'},
-  { value: 'Currently staying with family or friends'},
+  { value: 'I’m still staying at the property' },
+  { value: 'Currently staying with family or friends' },
 ]
 
 type StepThreeFormData = {
@@ -38,7 +39,7 @@ function PropertyStepThree() {
       console.log('Step Three data:', data)
       setTimeout(() => {
         router.push('/property-info/property-step-four')
-        toast.success('Step saved successfully')
+        // toast.success('Step saved successfully')
         setIsSubmitting(false)
       }, 400)
     } finally {
@@ -59,12 +60,16 @@ function PropertyStepThree() {
             error={errors.displacementStatus?.message}
           />
 
-          <CustomButton
-            title="Next"
-            loading={isSubmitting}
-            sendingMsg="Processing..."
-            type="submit"
-          />
+          <div className='flex  flex-col-reverse md:flex-row gap-3'>
+            <CustomLink link="/property-info/property-step-two" title='Back' className="" />
+
+            <CustomButton
+              title="Next"
+              loading={isSubmitting}
+              sendingMsg="Processing..."
+              type="submit"
+            />
+          </div>
         </form>
       </div>
     </div>

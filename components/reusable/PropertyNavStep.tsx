@@ -58,10 +58,10 @@ const redirectPropertyStep = () => {
 }
   return (
     <div className='bg-whiteColor rounded-[8px] p-2 md:p-1 lg:p-2'>
-       <div className="flex items-center  gap-2 h-full"> 
+       <div className="flex items-center justify-center  gap-2 h-full"> 
           <button 
             onClick={redirectPropertyStep}
-            className="flex cursor-pointer relative items-center gap-3 p-3 bg-secondaryColor/60 rounded-[8px]" 
+            className=" cursor-pointer hidden md:flex relative items-center gap-3 p-3 bg-secondaryColor/60 rounded-[8px]" 
             aria-label="Go back to previous step"
           >
             <GoArrowLeft   className="text-blackColor md:w-[22px] md:h-[22px] w-[18px] h-[18px]" />

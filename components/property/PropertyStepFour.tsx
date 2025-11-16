@@ -6,6 +6,8 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import MultiSelectCheckboxGroup from '../allForm/MultiSelectCheckboxGroup'
+import PropertyNavStep from '../reusable/PropertyNavStep'
+import CustomLink from '../reusable/CustomLink'
 
 
 type FireAreaForm = {
@@ -37,7 +39,7 @@ export default function PropertyStepFireAreas() {
     console.log('Selected fire-affected areas:', data)
     setTimeout(() => {
         router.push('/property-info/property-step-five')
-      toast.success('Saved successfully!')
+      // toast.success('Saved successfully!')
       setIsSubmitting(false)
     }, 500)
   }
@@ -46,6 +48,10 @@ export default function PropertyStepFireAreas() {
     <div className="flex items-center justify-center">
       <div className="md:w-[500px] w-[90vw] bg-white rounded-2xl shadow-lg p-4 md:p-9">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          <div className='md:hidden'>
+
+          <PropertyNavStep title="Property Info" stepLength={6} />
+          </div>
           <MultiSelectCheckboxGroup
             question="Do you have immediate needs for temporary housing, food, or clothing? "
             required
@@ -56,12 +62,16 @@ export default function PropertyStepFireAreas() {
             error={errors.affectedAreas?.message}
           />
 
-          <CustomButton
-            title="Next"
-            loading={isSubmitting}
-            sendingMsg="Processing..."
-            type="submit"
-          />
+           <div className='flex  flex-col-reverse md:flex-row gap-3'>
+                      <CustomLink link="/property-info/property-step-three" title='Back' className="" />
+          
+                      <CustomButton
+                        title="Next"
+                        loading={isSubmitting}
+                        sendingMsg="Processing..."
+                        type="submit"
+                      />
+                    </div>
         </form>
       </div>
     </div>

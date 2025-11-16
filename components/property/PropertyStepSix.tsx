@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import PropertyStepTwoForm from './PropertyStepTwoForm'
+import CustomLink from '../reusable/CustomLink'
 
 
 const mortgageOptions = [
@@ -37,7 +38,7 @@ function PropertyStepSix() {
     try {
       console.log('Step six data:', data)
       setTimeout(() => {
-        toast.success('Step saved successfully')
+        // toast.success('Step saved successfully')
         setIsSubmitting(false)
       }, 400)
     } finally {
@@ -58,12 +59,18 @@ function PropertyStepSix() {
             error={errors.mortgageStatus?.message}
           />
 
-          <CustomButton
-            title="Next"
-            loading={isSubmitting}
-            sendingMsg="Processing..."
-            type="submit"
-          />
+           <div className='flex  flex-col-reverse md:flex-row gap-3'>
+            <div className='md:w-[35%]'>
+            <CustomLink link="/property-info/property-step-two" title='Back' className="" />
+            </div>
+
+            <CustomButton
+              title="Next"
+              loading={isSubmitting}
+              sendingMsg="Processing..."
+              type="submit"
+            />
+          </div>
         </form>
       </div>
     </div>

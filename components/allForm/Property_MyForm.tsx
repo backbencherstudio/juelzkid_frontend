@@ -9,6 +9,8 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import CustomButton from '../reusable/CustomButton'
+import PropertyNavStep from '../reusable/PropertyNavStep'
+import CustomLink from '../reusable/CustomLink'
 
 // Form data type
 type PropertyFormData = {
@@ -52,7 +54,9 @@ const router = useRouter()
   return (
     <div className=" flex items-center justify-center ">
       <div className="md:w-[500px] w-[90vw] max-w-[530px] bg-white rounded-2xl shadow-lg p-4 md:p-9">
-
+        <div className='pb-2'>
+         <PropertyNavStep title="Property Info" stepLength={6} />
+        </div>
         {/* Form Section */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 ">
           {/* Address */}
@@ -182,12 +186,15 @@ const router = useRouter()
           </div>
 
           {/* Submit Button */}
-          <CustomButton
-            title="Next"
-            loading={isSubmitting}
-            sendingMsg="Processing..."
-            type="submit"
-          />
+          <div className='flex  flex-col-reverse md:flex-row gap-3'>
+            <CustomLink link="/dashboard" title='Back' className="" />
+            <CustomButton
+              title="Next"
+              loading={isSubmitting}
+              sendingMsg="Processing..."
+              type="submit"
+            />
+          </div>
         </form>
       </div>
     </div>

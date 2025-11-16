@@ -6,6 +6,8 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import PropertyStepTwoForm from './PropertyStepTwoForm'
+import Link from 'next/link'
+import CustomLink from '../reusable/CustomLink'
 
 
 const safetyOptions = [
@@ -38,7 +40,7 @@ function PropertyStepTwo() {
       console.log('Step Two data:', data)
       setTimeout(() => {
         router.push('/property-info/property-step-three')
-        toast.success('Step saved successfully')
+        // toast.success('Step saved successfully')
         setIsSubmitting(false)
       }, 400)
     } finally {
@@ -58,13 +60,16 @@ function PropertyStepTwo() {
             onChange={(val) => setValue('homeSafety', val, { shouldValidate: true })}
             error={errors.homeSafety?.message}
           />
-
+          <div className='flex  flex-col-reverse md:flex-row gap-3'>
+           <CustomLink link="/property-info" title='Back'  className=""/>
+             
           <CustomButton
             title="Next"
             loading={isSubmitting}
             sendingMsg="Processing..."
             type="submit"
           />
+          </div>
         </form>
       </div>
     </div>

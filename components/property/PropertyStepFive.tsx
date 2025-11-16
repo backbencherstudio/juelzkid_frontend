@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 import { Label } from '../ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 import PropertyStepTwoForm from './PropertyStepTwoForm'
+import CustomLink from '../reusable/CustomLink'
 
 
 const accommodationOptions = [
@@ -44,7 +45,7 @@ function PropertyStepFive() {
       console.log('Step five data:', squareFeet)
       setTimeout(() => {
         router.push('/property-info/property-step-six')
-        toast.success('Step saved successfully')
+        // toast.success('Step saved successfully')
         setIsSubmitting(false)
       }, 400)
     } finally {
@@ -56,39 +57,28 @@ function PropertyStepFive() {
     <div className="flex items-center justify-center">
       <div className="md:w-[500px] w-[90vw] max-w-[530px] bg-white rounded-2xl shadow-lg p-4 md:p-9">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div>
-          <Label className="text-sm font-medium mb-2 text-[#070707]">What's the approximate square footage?<span className="text-[#e12626]">*</span></Label>
-          <Select value={squareFeet} onValueChange={(v) => setSquareFeet(v)}>
-            <SelectTrigger className='!h-11 md:!h-12 w-full'>
-              <SelectValue placeholder="Select square footage" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="1000-2000">1000-2000</SelectItem>
-              <SelectItem value="2000-3000">2000-3000</SelectItem>
-              <SelectItem value="3000-4000">3000-4000</SelectItem>
-              <SelectItem value="4000-5000">4000-5000</SelectItem>
-              <SelectItem value="5000-6000">5000-6000</SelectItem>
-              <SelectItem value="6000-7000">6000-7000</SelectItem>
-              <SelectItem value="7000-8000">7000-8000</SelectItem>
-            </SelectContent>
-          </Select>
-            </div>
-
+            
           <PropertyStepTwoForm
             question="Did you live in or rent this property? "
             required
             options={accommodationOptions}
             selectedValue={selected}
+            setSquareFeet={setSquareFeet}
+            squareFeet={squareFeet}
             onChange={(val) => setValue('accommodationStatus', val, { shouldValidate: true })}
             error={errors.accommodationStatus?.message}
           />
 
-          <CustomButton
-            title="Next"
-            loading={isSubmitting}
-            sendingMsg="Processing..."
-            type="submit"
-          />
+           <div className='flex  flex-col-reverse md:flex-row gap-3'>
+            <CustomLink link="/property-info/property-step-two" title='Back' className="" />
+
+            <CustomButton
+              title="Next"
+              loading={isSubmitting}
+              sendingMsg="Processing..."
+              type="submit"
+            />
+          </div>
         </form>
       </div>
     </div>

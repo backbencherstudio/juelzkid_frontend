@@ -1,8 +1,10 @@
 'use client'
-
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { cn } from '@/lib/utils'
+import PropertyNavStep from '../reusable/PropertyNavStep'
+import { usePathname } from 'next/navigation'
 
 type Option = {
   value: string
@@ -15,6 +17,8 @@ interface PropertyRadioFormProps {
   selectedValue: string
   onChange: (val: string) => void
   error?: string
+  squareFeet?: string
+  setSquareFeet?: (val: string) => void
 }
 
 export default function PropertyRadioForm({
@@ -23,11 +27,41 @@ export default function PropertyRadioForm({
   options,
   selectedValue,
   onChange,
-  error
+  error,
+  squareFeet,
+  setSquareFeet
+
 }: PropertyRadioFormProps) {
+  const pathname = usePathname()
+  
   return (
     <div className="space-y-2">
-      <Label className="text-sm font-medium text-[#070707]">
+      <div className='md:hidden'>
+      <PropertyNavStep title="Property Info" stepLength={6} />
+      </div>
+      {
+        pathname === '/property-info/property-step-five' && 
+         <div className='pb-2'>
+                <Label className="text-sm  font-medium mb-2 text-[#070707]">What's the approximate square footage?<span className="text-[#e12626]">*</span></Label>
+                <Select value={squareFeet} onValueChange={(v) => setSquareFeet(v)}>
+                  <SelectTrigger className='!h-11 md:!h-12 w-full'>
+                    <SelectValue placeholder="Select square footage" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="1000-2000">1000-2000</SelectItem>
+                    <SelectItem value="2000-3000">2000-3000</SelectItem>
+                    <SelectItem value="3000-4000">3000-4000</SelectItem>
+                    <SelectItem value="4000-5000">4000-5000</SelectItem>
+                    <SelectItem value="5000-6000">5000-6000</SelectItem>
+                    <SelectItem value="6000-7000">6000-7000</SelectItem>
+                    <SelectItem value="7000-8000">7000-8000</SelectItem>
+                  </SelectContent>
+                </Select>
+                  </div>
+      }
+     
+      
+      <Label className="text-sm md:text-base font-medium text-[#070707]">
         {question} {required && <span className="text-[#e12626]">*</span>}
       </Label>
 
