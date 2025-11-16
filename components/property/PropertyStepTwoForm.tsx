@@ -33,11 +33,11 @@ export default function PropertyRadioForm({
 
 }: PropertyRadioFormProps) {
   const pathname = usePathname()
-  
+  const StepName = pathname.includes('property-step') ? 'Property Info' : 'Damage Info'
   return (
     <div className="space-y-2">
       <div className='md:hidden'>
-      <PropertyNavStep title="Property Info" stepLength={6} />
+      <PropertyNavStep title={StepName} stepLength={6} />
       </div>
       {
         pathname === '/property-info/property-step-five' && 
