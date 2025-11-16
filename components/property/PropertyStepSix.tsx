@@ -39,6 +39,7 @@ function PropertyStepSix() {
       console.log('Step six data:', data)
       setTimeout(() => {
         // toast.success('Step saved successfully')
+        router.push('/damage-info')
         setIsSubmitting(false)
       }, 400)
     } finally {
@@ -61,7 +62,7 @@ function PropertyStepSix() {
 
            <div className='flex  flex-col-reverse md:flex-row gap-3'>
             <div className='md:w-[35%]'>
-            <CustomLink link="/property-info/property-step-two" title='Back' className="" />
+            <CustomLink link="/property-info/property-step-five" title='Back' className="" />
             </div>
 
             <CustomButton

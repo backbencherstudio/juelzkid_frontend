@@ -5,6 +5,9 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import MultiSelectCheckboxGroup from '../allForm/MultiSelectCheckboxGroup'
+import CustomLink from '../reusable/CustomLink'
+import PropertyNavStep from '../reusable/PropertyNavStep'
+import { useRouter } from 'next/navigation'
 
 
 type FireAreaForm = {
@@ -34,12 +37,13 @@ export default function PropertyStepFireAreas() {
 
   const selected = watch('affectedAreas')
   const [isSubmitting, setIsSubmitting] = useState(false)
-
+  const router = useRouter()  
   const onSubmit = async (data: FireAreaForm) => {
     setIsSubmitting(true)
     console.log('Selected fire-affected areas:', data)
     setTimeout(() => {
-      toast.success('Saved successfully!')
+      // toast.success('Saved successfully!')
+      router.push('/damage-info/damage-step-two')
       setIsSubmitting(false)
     }, 500)
   }
@@ -48,6 +52,10 @@ export default function PropertyStepFireAreas() {
     <div className="flex items-center justify-center">
       <div className="md:w-[500px] w-[90vw] bg-white rounded-2xl shadow-lg p-6 md:p-9">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          <div className='md:hidden'>
+
+            <PropertyNavStep title="Property Info" stepLength={6} />
+          </div>
           <MultiSelectCheckboxGroup
             question="What areas were affected by the fire?"
             required
@@ -57,12 +65,18 @@ export default function PropertyStepFireAreas() {
             error={errors.affectedAreas?.message}
           />
 
-          <CustomButton
-            title="Next"
-            loading={isSubmitting}
-            sendingMsg="Processing..."
-            type="submit"
-          />
+          <div className='flex  flex-col-reverse md:flex-row gap-3'>
+                      <div className='md:w-[35%]'>
+                        <CustomLink link="/property-info/property-step-six" title='Back' className="" />
+                      </div>
+          
+                      <CustomButton
+                        title="Next"
+                        loading={isSubmitting}
+                        sendingMsg="Processing..."
+                        type="submit"
+                      />
+                    </div>
         </form>
       </div>
     </div>

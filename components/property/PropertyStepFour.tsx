@@ -21,7 +21,7 @@ const areaOptions = [
   { value: 'No, I don\'t need immediate assistance', label: 'No, I don\'t need immediate assistance' },
 ]
 
-export default function PropertyStepFireAreas() {
+export default function PropertyStepFour() {
   const {
     handleSubmit,
     setValue,
@@ -38,7 +38,7 @@ export default function PropertyStepFireAreas() {
     setIsSubmitting(true)
     console.log('Selected fire-affected areas:', data)
     setTimeout(() => {
-        router.push('/property-info/property-step-five')
+      router.push('/property-info/property-step-five')
       // toast.success('Saved successfully!')
       setIsSubmitting(false)
     }, 500)
@@ -50,7 +50,7 @@ export default function PropertyStepFireAreas() {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <div className='md:hidden'>
 
-          <PropertyNavStep title="Property Info" stepLength={6} />
+            <PropertyNavStep title="Property Info" stepLength={6} />
           </div>
           <MultiSelectCheckboxGroup
             question="Do you have immediate needs for temporary housing, food, or clothing? "
@@ -62,16 +62,18 @@ export default function PropertyStepFireAreas() {
             error={errors.affectedAreas?.message}
           />
 
-           <div className='flex  flex-col-reverse md:flex-row gap-3'>
-                      <CustomLink link="/property-info/property-step-three" title='Back' className="" />
-          
-                      <CustomButton
-                        title="Next"
-                        loading={isSubmitting}
-                        sendingMsg="Processing..."
-                        type="submit"
-                      />
-                    </div>
+          <div className='flex  flex-col-reverse md:flex-row gap-3'>
+            <div className='md:w-[35%]'>
+              <CustomLink link="/property-info/property-step-three" title='Back' className="" />
+            </div>
+
+            <CustomButton
+              title="Next"
+              loading={isSubmitting}
+              sendingMsg="Processing..."
+              type="submit"
+            />
+          </div>
         </form>
       </div>
     </div>

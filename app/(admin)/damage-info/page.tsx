@@ -1,16 +1,17 @@
-import Property_MyForm from '@/components/allForm/Property_MyForm'
+
+import PropertyStepFireAreas from '@/components/property/PropertyStepFireAreas'
 import FormHeader from '@/components/reusable/FormHeader'
-import property from '@/public/icon/property.png'
+import property from '@/public/icon/damage.png'
 function page() {
   return (
     <div>
       <FormHeader
       icon={property}
-      title="Tell Us About the Property"
-      description="We’ll use this info to tailor your recovery plan."
+      title="Help Us Understand the Damage"
+      description="This will help us better support your recovery journey."
       />
       <div>
-        <Property_MyForm/>
+        <PropertyStepFireAreas/>
       </div>
     </div>
   )

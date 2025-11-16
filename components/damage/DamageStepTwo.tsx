@@ -1,26 +1,23 @@
 'use client'
-
+import PropertyStepTwoForm from '@/components/property/PropertyStepTwoForm'
 import CustomButton from '@/components/reusable/CustomButton'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
-import PropertyStepTwoForm from './PropertyStepTwoForm'
-import Link from 'next/link'
 import CustomLink from '../reusable/CustomLink'
 
 
 const safetyOptions = [
-  { value: 'Yes, it’s safe to enter' },
-  { value: 'No, it’s unsafe or structurally damaged'},
-  { value: 'Not sure, waiting for inspection'},
+  { value: 'Contained to one area' },
+  { value: 'Spread to multiple rooms'},
+  { value: 'Spread throughout the property'},
 ]
 
 type StepTwoFormData = {
   homeSafety: string
 }
 
-function PropertyStepTwo() {
+function DamageStepTwo() {
   const {
     handleSubmit,
     setValue,
@@ -53,7 +50,7 @@ function PropertyStepTwo() {
       <div className="md:w-[500px] w-[90vw] max-w-[530px] bg-white rounded-2xl shadow-lg p-4 md:p-9">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <PropertyStepTwoForm
-            question="Is the home currently safe to enter?"
+            question="Was the fire contained to one area, or did it spread widely?"
             required
             options={safetyOptions}
             selectedValue={selected}
@@ -62,7 +59,7 @@ function PropertyStepTwo() {
           />
           <div className='flex  flex-col-reverse md:flex-row gap-3'>
             <div className='md:w-[35%]'>
-                       <CustomLink link="/property-info" title='Back' className="" />
+                       <CustomLink link="/damage-info" title='Back' className="" />
                        </div>
              
           <CustomButton
@@ -78,4 +75,4 @@ function PropertyStepTwo() {
   )
 }
 
-export default PropertyStepTwo
+export default DamageStepTwo

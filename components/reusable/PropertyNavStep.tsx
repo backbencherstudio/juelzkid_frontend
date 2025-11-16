@@ -8,7 +8,8 @@ function PropertyNavStep({ title, stepLength }: { title: string, stepLength: num
     const pathname = usePathname()  
     const router = useRouter()
       const [stepCount, setStepCount] = useState(0)
-const  isPropertSetp = pathname.includes("/property-info")
+const  isPropertSetp = pathname.includes("/property-info") 
+const  isdamageSetp = pathname.includes("/damage-info") 
 const totalSteps = stepLength
 
 // Update stepCount based on pathname
@@ -24,7 +25,20 @@ useEffect(() => {
     currentStep = 3
   } else if (pathname.includes("/property-info/property-step-two")) {
     currentStep = 2
-  } else if (pathname.includes("/property-info")) {
+  } 
+  else if (pathname.includes("/property-info")) {
+    currentStep = 1
+  }
+  else if (pathname.includes("/damage-info/damage-step-four")) {
+    currentStep = 4
+  }
+  else if (pathname.includes("/damage-info/damage-step-three")) {
+    currentStep = 3
+  }
+  else if (pathname.includes("/damage-info/damage-step-two")) {
+    currentStep = 2
+  }
+  else if (pathname.includes("/damage-info")) {
     currentStep = 1
   }
   setStepCount(currentStep)
@@ -49,10 +63,28 @@ const redirectPropertyStep = () => {
   } else if(isPropertSetp && pathname.includes("/property-info/property-step-five")) {
     setStepCount(5)
     router.push("/property-info/property-step-four")
-  }else if(isPropertSetp && pathname.includes("/property-info/property-step-six")) {
+  }
+  else if(isPropertSetp && pathname.includes("/property-info/property-step-six")) {
     setStepCount(6)
     router.push("/property-info/property-step-five")
-  } else {
+  } 
+  else if(isdamageSetp && pathname.includes("/damage-info")) {
+    setStepCount(1)
+    router.push("/property-info/property-step-six")
+  } 
+  else if(isdamageSetp && pathname.includes("/damage-info/damage-step-two")) {
+    setStepCount(2)
+    router.push("/damage-info")
+  } 
+  else if(isdamageSetp && pathname.includes("/damage-info/damage-step-three")) {
+    setStepCount(3)
+    router.push("/damage-info/damage-step-two")
+  } 
+  else if(isdamageSetp && pathname.includes("/damage-info/damage-step-four")) {
+    setStepCount(4)
+    router.push("/damage-info/damage-step-three")
+  } 
+  else {
     router.push("/dashboard")
   }
 }

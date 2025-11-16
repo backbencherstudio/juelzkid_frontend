@@ -36,7 +36,7 @@ export default function DashboardNavbar() {
   const isActive = (href: string): boolean => {
     return pathname === href || pathname.startsWith(`${href}/`)
   };
-const  isPropertSetp = pathname.includes("/property-info")
+const  isPropertSetp = pathname.includes("/property-info") || pathname.includes("/damage-info")
   const handleLogout = () => {
     try {
       router.push("/")
@@ -46,8 +46,8 @@ const  isPropertSetp = pathname.includes("/property-info")
     }
   }
 
-  const title = pathname.includes("/property-info") ? "Property Info" : "Dashboard"
-  const stepLength = pathname.includes("/property-info") ? 6 : 0
+  const title = pathname.includes("/property-info") ? "Property Info" : pathname.includes("/damage-info") ? "Damage Assessment" : "Dashboard"
+  const stepLength = pathname.includes("/property-info") ? 6 : pathname.includes("/damage-info") ? 4 : 0
   return (
     <header className=" sticky  top-0 left-0 w-full py-4 z-50  ">
       <div className="container h-full mx-auto flex justify-between items-center">

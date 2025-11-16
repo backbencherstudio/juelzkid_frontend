@@ -1,5 +1,4 @@
 import FormHeader from '@/components/reusable/FormHeader'
-import PropertyNavStep from '@/components/reusable/PropertyNavStep'
 import house from "@/public/icon/house.png"
 import React from 'react'
 function PropertyInfoLayout({ children }: { children: React.ReactNode }) {

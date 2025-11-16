@@ -70,7 +70,9 @@ function PropertyStepFive() {
           />
 
            <div className='flex  flex-col-reverse md:flex-row gap-3'>
-            <CustomLink link="/property-info/property-step-two" title='Back' className="" />
+            <div className='md:w-[35%]'>
+                       <CustomLink link="/property-info/property-step-four" title='Back' className="" />
+                       </div>
 
             <CustomButton
               title="Next"
