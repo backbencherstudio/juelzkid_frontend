@@ -27,7 +27,7 @@ function DamageStepFour() {
   } = useForm<StepTwoFormData>({
     defaultValues: { damageFour: safetyOptions[0].value },
   })
-
+  
   const selected = watch('damageFour')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const router = useRouter()
@@ -37,7 +37,7 @@ function DamageStepFour() {
     try {
       console.log('Step Two data:', data)
       setTimeout(() => {
-        // router.push('/property-info/property-step-four')
+        router.push('/insurance-info')
         // toast.success('Step saved successfully')
         setIsSubmitting(false)
       }, 400)
@@ -60,9 +60,8 @@ function DamageStepFour() {
           />
           <div className='flex  flex-col-reverse md:flex-row gap-3'>
             <div className='md:w-[35%]'>
-                       <CustomLink link="/damage-info/damage-step-two" title='Back' className="" />
-                       </div>
-             
+                  <CustomLink link="/damage-info/damage-step-three" title='Back' className="" />
+            </div>
           <CustomButton
             title="Next"
             loading={isSubmitting}

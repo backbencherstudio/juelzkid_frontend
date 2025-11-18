@@ -1,12 +1,12 @@
 import FormHeader from '@/components/reusable/FormHeader'
-import property from '@/public/icon/damage.png'
+import property from '@/public/icon/insurance.png'
 import React from 'react'
 function PropertyInfoLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
         
         <div className='mt-10'>
-        <FormHeader title="Help Us Understand the Damage" description="This will help us better support your recovery journey." icon={property} />
+        <FormHeader title="Insurance Information" description="We’ll use this to assist with claims and next steps." icon={property} />
         </div>
       {children}
     </div>

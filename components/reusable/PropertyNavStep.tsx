@@ -10,6 +10,7 @@ function PropertyNavStep({ title, stepLength }: { title: string, stepLength: num
       const [stepCount, setStepCount] = useState(0)
 const  isPropertSetp = pathname.includes("/property-info") 
 const  isdamageSetp = pathname.includes("/damage-info") 
+const  isInsuranceSetp = pathname.includes("/insurance-info") 
 const totalSteps = stepLength
 
 // Update stepCount based on pathname
@@ -35,8 +36,14 @@ useEffect(() => {
   else if (pathname.includes("/damage-info/damage-step-three")) {
     currentStep = 3
   }
-  else if (pathname.includes("/damage-info/damage-step-two")) {
+  else if (pathname.includes("/insurance-info")) {
+    currentStep = 1
+  }
+  else if (pathname.includes("/insurance-info/insurance-step-two")) {
     currentStep = 2
+  }
+  else if (pathname.includes("/damage-info/damage-step-three")) {
+    currentStep = 3
   }
   else if (pathname.includes("/damage-info")) {
     currentStep = 1
@@ -83,6 +90,18 @@ const redirectPropertyStep = () => {
   else if(isdamageSetp && pathname.includes("/damage-info/damage-step-four")) {
     setStepCount(4)
     router.push("/damage-info/damage-step-three")
+  } 
+  else if(isInsuranceSetp && pathname.includes("/insurance-info")) {
+    setStepCount(1)
+    router.push("/property-info/damage-step-four")
+  } 
+  else if(isInsuranceSetp && pathname.includes("/insurance-info/insurance-step-two")) {
+    setStepCount(2)
+    router.push("/insurance-info")
+  } 
+  else if(isInsuranceSetp && pathname.includes("/insurance-info/insurance-step-three")) {
+    setStepCount(3)
+    router.push("/insurance-info/insurance-step-two")
   } 
   else {
     router.push("/dashboard")
