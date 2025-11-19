@@ -11,6 +11,7 @@ function PropertyNavStep({ title, stepLength }: { title: string, stepLength: num
 const  isPropertSetp = pathname.includes("/property-info") 
 const  isdamageSetp = pathname.includes("/damage-info") 
 const  isInsuranceSetp = pathname.includes("/insurance-info") 
+const  isDecisionSetp = pathname.includes("/decision-info") 
 const totalSteps = stepLength
 
 // Update stepCount based on pathname
@@ -31,16 +32,8 @@ useEffect(() => {
     currentStep = 1
   }
   else if (pathname.includes("/damage-info/damage-step-four")) {
+     
     currentStep = 4
-  }
-  else if (pathname.includes("/damage-info/damage-step-three")) {
-    currentStep = 3
-  }
-  else if (pathname.includes("/insurance-info")) {
-    currentStep = 1
-  }
-  else if (pathname.includes("/insurance-info/insurance-step-two")) {
-    currentStep = 2
   }
   else if (pathname.includes("/damage-info/damage-step-three")) {
     currentStep = 3
@@ -48,11 +41,30 @@ useEffect(() => {
   else if (pathname.includes("/damage-info")) {
     currentStep = 1
   }
+  else if (pathname.includes("/insurance-info/insurance-step-three")) {
+    currentStep = 3
+  }
+  else if (pathname.includes("/insurance-info/insurance-step-two")) {
+    currentStep = 2
+  }
+  else if (pathname.includes("/insurance-info")) {
+  
+    currentStep = 1
+  }
+  else if (pathname.includes("/decision-info/decision-step-two")) {
+  
+    currentStep = 2
+  }
+  else if (pathname.includes("/decision-info/decision-step-one")) {
+  
+    currentStep = 1
+  }
   setStepCount(currentStep)
 }, [pathname])
 
 const progressRatio = totalSteps > 0 ? Math.min(stepCount / totalSteps, 1) : 0
 const progressDegrees = `${progressRatio * 360}deg`
+
 
 const redirectPropertyStep = () => {
   if(isPropertSetp && pathname.includes("/property-info") && !pathname.includes("/property-step")) {
@@ -91,17 +103,28 @@ const redirectPropertyStep = () => {
     setStepCount(4)
     router.push("/damage-info/damage-step-three")
   } 
-  else if(isInsuranceSetp && pathname.includes("/insurance-info")) {
-    setStepCount(1)
-    router.push("/property-info/damage-step-four")
+  else if(isInsuranceSetp && pathname.includes("/insurance-info/insurance-step-three")) {
+    setStepCount(3)
+    router.push("/insurance-info/insurance-step-two")
   } 
   else if(isInsuranceSetp && pathname.includes("/insurance-info/insurance-step-two")) {
     setStepCount(2)
     router.push("/insurance-info")
   } 
-  else if(isInsuranceSetp && pathname.includes("/insurance-info/insurance-step-three")) {
-    setStepCount(3)
-    router.push("/insurance-info/insurance-step-two")
+  else if(isInsuranceSetp && pathname.includes("/insurance-info")) {
+
+    setStepCount(1)
+    router.push("/damage-info/damage-step-four")
+  } 
+  else if(isInsuranceSetp && pathname.includes("/decision-info/decision-step-two")) {
+
+    setStepCount(2)
+    router.push("/decision-info/decision-step-one")
+  } 
+  else if(isInsuranceSetp && pathname.includes("/decision-info/decision-step-one")) {
+
+    setStepCount(1)
+    router.push("/insurance-info/insurance-step-three")
   } 
   else {
     router.push("/dashboard")

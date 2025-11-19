@@ -42,7 +42,7 @@ function InsuranceStepThree() {
     try {
       console.log('Step Two data:', data)
       setTimeout(() => {
-        // router.push('/insurance-info/insurance-step-two')
+        router.push('/decision-info/decision-step-one')
         // toast.success('Step saved successfully')
         setIsSubmitting(false)
       }, 400)
