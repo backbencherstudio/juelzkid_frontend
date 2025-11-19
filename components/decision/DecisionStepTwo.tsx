@@ -128,7 +128,7 @@ export default function DecisionTwoForm() {
         {/* Submit */}
         <div className='flex  flex-col-reverse md:flex-row gap-3'>
                     <div className='md:w-[35%]'>
-                               <CustomLink link="/damage-info/damage-step-two" title='Back' className="" />
+                               <CustomLink link="/decision-info/decision-step-one" title='Back' className="" />
                                </div>
         <CustomButton
           title="Get a Recovery Plan Now"

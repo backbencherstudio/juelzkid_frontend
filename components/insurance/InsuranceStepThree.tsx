@@ -83,7 +83,7 @@ function InsuranceStepThree() {
           />
           <div className='flex  flex-col-reverse md:flex-row gap-3'>
             <div className='md:w-[35%]'>
-                  <CustomLink link="/insurance-info/insurance-step-three" title='Back' className="" />
+                  <CustomLink link="/insurance-info/insurance-step-two" title='Back' className="" />
             </div>
           <CustomButton
             title="Next"

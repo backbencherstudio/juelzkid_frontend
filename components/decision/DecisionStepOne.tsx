@@ -60,7 +60,7 @@ function DecisionStepOne() {
           />
           <div className='flex  flex-col-reverse md:flex-row gap-3'>
             <div className='md:w-[35%]'>
-                       <CustomLink link="/damage-info/damage-step-two" title='Back' className="" />
+                       <CustomLink link="/insurance-info/insurance-step-three" title='Back' className="" />
                        </div>
              
           <CustomButton
