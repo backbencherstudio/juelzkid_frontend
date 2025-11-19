@@ -25,7 +25,7 @@ import { toast } from "react-toastify";
 import PropertyNavStep from "./reusable/PropertyNavStep";
 const menuItems = [
   { name: "Dashboard", slug: "/dashboard", icon : <RxDashboard /> },
-  { name: "My Plans", slug: "/options" , icon : <AiOutlineFileSearch  /> },
+  { name: "My Plans", slug: "/final-option" , icon : <AiOutlineFileSearch  /> },
   { name: "Resources", slug: "/resources" , icon : <LuBookText/> },
 ];
 
