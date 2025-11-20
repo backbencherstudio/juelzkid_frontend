@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/accordion";
 import CustomerSupport from "@/public/icon/customer-support";
 import { Check, Play } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 interface FAQItem {
@@ -143,9 +144,9 @@ function page() {
             </h3>
             <p className="flex items-center space-x-2 bg-[#FFF] border border-[#F0F0F0] rounded-[14px] px-[18px] py-2">
               <CustomerSupport />
-              <span className="font-semibold text-[16px] leading-[150%] tracking-[0.32px] text-[#FF5B00]">
+              <Link href={"https://www.housefiresolutions.com/live-chat"} className="font-semibold text-[16px] leading-[150%] tracking-[0.32px] text-[#FF5B00]">
                 Ask A Question
-              </span>
+              </Link>
             </p>
           </div>
 
@@ -215,7 +216,7 @@ function page() {
                     const isChecked = checkedItems.has(itemKey);
 
                     return (
-                      <label
+                      <Link href={"https://www.housefiresolutions.com/checklist"}
                         key={itemKey}
                         className="flex items-center gap-3 px-[14px] py-3 rounded-[16px] border-[2px] border-[#E2E8F0] cursor-pointer group"
                       >
@@ -245,7 +246,7 @@ function page() {
                         >
                           {item.title}
                         </span>
-                      </label>
+                      </Link>
                     );
                   })}
                 </div>

@@ -207,3 +207,9 @@ input:checked ~ .checkmark {
 }
 
 
+.blue-Item .ac-item{
+  color: #05299B !important;
+}
+.p-Item .ac-item{
+  color: #E4572E !important;
+}

@@ -6,6 +6,7 @@ import DollerIcon from "@/public/icon/doller";
 import HomeIcon from "@/public/icon/home";
 import ShieldUserIcon from "@/public/icon/shield-user";
 import Image from "next/image";
+import Link from "next/link";
 
 const cardFlowItems = [
   {
@@ -15,6 +16,7 @@ const cardFlowItems = [
     description:
       "Estimate your potential insurance payout based on your damage and policy details.",
     buttonText: "See Potential Payout",
+     link: "https://insurance.housefiresolutions.com/"
   },
   {
     id: 2,
@@ -23,6 +25,7 @@ const cardFlowItems = [
     description:
       "Answer quick questions to see whether restoring or selling is the better fit for you.",
     buttonText: "Take Quick Quiz",
+    link: "https://restoration.housefiresolutions.com/"
   },
   {
     id: 3,
@@ -31,6 +34,7 @@ const cardFlowItems = [
     description:
       "Get an estimated cost to restore or rebuild your home using typical market rates.",
     buttonText: "See Potential Cost",
+    link: "https://www.housefiresolutions.com/cash-offer"
   },
   {
     id: 4,
@@ -39,6 +43,7 @@ const cardFlowItems = [
     description:
       "Request a no-obligation cash offer to sell your fire-damaged home as-is.",
     buttonText: "See If I Qualify",
+    link: "https://www.housefiresolutions.com/cash-offer"
   },
 ];
 
@@ -117,12 +122,12 @@ const FinalOption = () => {
           Not sure which option is right for you?
         </h6>
         <div className="mt-4">
-          <button className="flex items-center justify-center space-x-2 bg-[#FFF] border border-[#F0F0F0] rounded-[14px] px-[18px] py-2 cursor-pointer w-full">
+          <Link href="https://www.housefiresolutions.com/live-chat" className="flex items-center justify-center space-x-2 bg-[#FFF] border border-[#F0F0F0] rounded-[14px] px-[18px] py-2 cursor-pointer w-full">
             <CustomerSupport />
             <span className="font-semibold text-[16px] leading-[150%] tracking-[0.32px] text-[#FF5B00] text-center">
               Ask A Question
             </span>
-          </button>
+          </Link>
         </div>
       </div>
     </div>

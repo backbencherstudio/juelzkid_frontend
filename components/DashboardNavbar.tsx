@@ -36,7 +36,7 @@ export default function DashboardNavbar() {
   const isActive = (href: string): boolean => {
     return pathname === href || pathname.startsWith(`${href}/`)
   };
-const  isPropertSetp = pathname.includes("/property-info") || pathname.includes("/damage-info") || pathname.includes("/insurance-info") || pathname.includes("/decision-info")
+const  isPropertSetp = pathname.includes("/property-info") || pathname.includes("/damage-info") || pathname.includes("/insurance-info") || pathname.includes("/decision-info") ;
   const handleLogout = () => {
     try {
       router.push("/")

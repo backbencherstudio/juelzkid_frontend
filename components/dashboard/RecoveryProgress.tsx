@@ -60,14 +60,14 @@ export function RecoveryProgress({
           <Eye className="w-5 h-5" />
           View Full Plan
         </Link>
-        <button
-          onClick={onNextStep}
-          disabled={currentPhase === totalPhases}
+        <Link
+        href="/final-option/personalized-recovery-plan"
+        
           className=" flex w-full items-center cursor-pointer justify-center gap-2 px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Go to Next Step
           <ChevronRight className="w-5 h-5" />
-        </button>
+        </Link>
       </div>
     </div>
   )
