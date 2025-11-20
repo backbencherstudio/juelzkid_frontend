@@ -99,9 +99,9 @@ const FinalOption = () => {
                 </p>
 
                 {/* Button */}
-                <button className="w-full text-[#FFF] font-semibold py-2 px-4 leading-[150%] tracking-[0.32px] text-[16px] rounded-[14px] bg-[linear-gradient(180deg,#FF5B00_0%,#FF7C33_100%)] cursor-pointer">
+                <Link href={card?.link} className="w-full text-[#FFF] font-semibold py-2 px-4 leading-[150%] tracking-[0.32px] text-[16px] rounded-[14px] bg-[linear-gradient(180deg,#FF5B00_0%,#FF7C33_100%)] cursor-pointer">
                   {card.buttonText}
-                </button>
+                </Link>
               </div>
 
               {/* Arrow - Only show on desktop and not after last card */}
