@@ -38,7 +38,7 @@ export default function DecisionTwoForm() {
 
     setTimeout(() => {
       setIsSubmitting(false);
-      router.push("/next-step");
+      router.push("/build-plan");
     }, 800);
   };
 

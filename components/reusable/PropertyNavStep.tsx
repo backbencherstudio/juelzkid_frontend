@@ -1,9 +1,10 @@
 "use client"
+import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { GoArrowLeft } from 'react-icons/go'
 import { PiBuildingOffice } from 'react-icons/pi'
-
+import dicision from "@/public/icon/dicisionmessage.svg"
 function PropertyNavStep({ title, stepLength }: { title: string, stepLength: number }) {
     const pathname = usePathname()  
     const router = useRouter()
@@ -116,12 +117,12 @@ const redirectPropertyStep = () => {
     setStepCount(1)
     router.push("/damage-info/damage-step-four")
   } 
-  else if(isInsuranceSetp && pathname.includes("/decision-info/decision-step-two")) {
+  else if(isDecisionSetp && pathname.includes("/decision-info/decision-step-two")) {
 
     setStepCount(2)
     router.push("/decision-info/decision-step-one")
   } 
-  else if(isInsuranceSetp && pathname.includes("/decision-info/decision-step-one")) {
+  else if(isDecisionSetp && pathname.includes("/decision-info/decision-step-one")) {
 
     setStepCount(1)
     router.push("/insurance-info/insurance-step-three")
@@ -144,7 +145,7 @@ const redirectPropertyStep = () => {
           <div 
             className="flex cursor-pointer relative items-center gap-3 p-2 bg-whiteColor rounded-[8px]" 
           >
-            <PiBuildingOffice   className="text-blackColor md:w-[22px] md:h-[22px] w-[18px] h-[18px]" />
+          {isDecisionSetp ? <Image src={dicision} alt='dicistion' className='md:w-[22px] md:h-[22px] w-[18px] h-[18px]'/> :  <PiBuildingOffice   className="text-blackColor md:w-[22px] md:h-[22px] w-[18px] h-[18px]" />}  
           </div>
           <div className="flex gap-4 items-center">
           <p

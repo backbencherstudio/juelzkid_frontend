@@ -180,3 +180,30 @@ input:checked ~ .checkmark {
 .fill-secondaryColor {
     fill: #05299B !important;
 }
+
+.bubble-container {
+  position: relative;
+  height: 200px; /* container height */
+  overflow: hidden;
+  
+}
+
+.bubble {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  transition: all 1s ease-in-out;
+}
+
+.bubble.show {
+  top: 0;
+  opacity: 1;
+}
+
+.bubble.hide {
+  top: 40px;
+  opacity: 0.3;
+}
+
+
