@@ -44,7 +44,7 @@ const router = useRouter()
       setTimeout(() => {
         router.push("/property-info/property-step-two")
         setIsSubmitting(false)
-        toast.success("Form submitted successfully")
+        // toast.success("Form submitted successfully")
       }, 500);
     } finally {
       setTimeout(() => setIsSubmitting(false), 500)
@@ -187,7 +187,9 @@ const router = useRouter()
 
           {/* Submit Button */}
           <div className='flex  flex-col-reverse md:flex-row gap-3'>
+            <div className='md:w-[35%]'>
             <CustomLink link="/dashboard" title='Back' className="" />
+            </div>
             <CustomButton
               title="Next"
               loading={isSubmitting}

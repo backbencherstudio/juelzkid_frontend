@@ -37,7 +37,7 @@ function InsuranceStepOne() {
         try {
             console.log("Insurance Step Data:", data)
             router.push("/insurance-info/insurance-step-two")
-            toast.success("Form submitted successfully")
+            // toast.success("Form submitted successfully")
         } finally {
             setTimeout(() => setIsSubmitting(false), 500)
         }

@@ -16,7 +16,7 @@ function DashboardPage() {
       setTimeout(() => {
         router.push("/about-you");
         setIsSubmitting(false);
-        toast.success("Get started successfully");
+        // toast.success("Get started successfully");
       }, 500);
     } catch (error) {
       setIsSubmitting(false);
